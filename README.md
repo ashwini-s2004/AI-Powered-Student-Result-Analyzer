@@ -47,11 +47,6 @@ Add screenshots inside the screenshots folder.
 
 ---
 
-## 🚀 Live Demo
-
-GitHub Pages Link Here
-
----
 
 ## 👨‍💻 Developer
 

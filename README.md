@@ -1,4 +1,4 @@
-# 🎓 Student Result Analyzer
+i# 🎓 Student Result Analyzer
 
 ## AI-Assisted Web Application Development Using Claude
 
@@ -38,12 +38,6 @@ A professional and responsive Student Result Calculator developed using HTML, CS
 ## 🤖 AI Assistance
 
 This project was developed using AI-Assisted Web Application Development techniques with Claude AI.
-
----
-
-## 📸 Screenshots
-
-Add screenshots inside the screenshots folder.
 
 ---
 

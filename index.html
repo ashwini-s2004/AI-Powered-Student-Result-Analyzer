@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Result Analyzer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+:root{
+--royal-blue:#4169E1;
+--red:#D90429;
+--white:#ffffff;
+--light:#f4f6f9;
+--dark:#121212;
+--card:#ffffff;
+--text:#333333;
+}
+
+body{
+background:var(--light);
+color:var(--text);
+overflow-x:hidden;
+transition:.4s;
+}
+
+/* DARK MODE */
+
+body.dark-mode{
+background:#121212;
+color:white;
+}
+
+body.dark-mode .calculator-card,
+body.dark-mode .feature-card,
+body.dark-mode .info,
+body.dark-mode nav{
+background:#1f1f1f;
+color:white;
+}
+
+body.dark-mode input{
+background:#2b2b2b;
+color:white;
+border:1px solid #555;
+}
+
+body.dark-mode footer{
+background:#000;
+}
+
+body.dark-mode .logo{
+color:#66a3ff;
+}
+
+body.dark-mode h2,
+body.dark-mode h3{
+color:#66a3ff;
+}
+
+/* TOP BAR */
+
+.top-bar{
+background:var(--royal-blue);
+color:white;
+padding:10px 30px;
+display:flex;
+justify-content:space-between;
+font-size:14px;
+flex-wrap:wrap;
+}
+
+/* NAVBAR */
+
+nav{
+background:white;
+padding:18px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:var(--royal-blue);
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+nav ul li a{
+text-decoration:none;
+font-weight:600;
+color:var(--royal-blue);
+}
+
+nav ul li a:hover{
+color:var(--red);
+}
+
+#themeBtn{
+padding:10px 15px;
+background:var(--royal-blue);
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* HERO SECTION */
+
+.hero{
+
+height:90vh;
+
+background:
+
+linear-gradient(
+rgba(0,0,0,.65),
+rgba(0,0,0,.65)
+),
+
+url("images/graduation.jpg");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero-content h1{
+font-size:70px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:24px;
+margin-bottom:25px;
+}
+
+.hero-content button{
+padding:15px 35px;
+border:none;
+background:var(--red);
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.hero-content button:hover{
+transform:translateY(-3px);
+}
+
+/* FEATURES */
+
+.features{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+padding:60px;
+}
+
+.feature-card{
+background:white;
+padding:30px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-8px);
+}
+
+.feature-card h3{
+color:var(--royal-blue);
+margin-bottom:10px;
+}
+
+/* ABOUT */
+
+.info{
+background:white;
+padding:70px 40px;
+text-align:center;
+}
+
+.info h2{
+color:var(--royal-blue);
+margin-bottom:20px;
+font-size:40px;
+}
+
+.info p{
+max-width:900px;
+margin:auto;
+line-height:1.8;
+}
+
+/* CALCULATOR */
+
+.calculator-section{
+padding:70px 20px;
+}
+
+.calculator-card{
+
+max-width:900px;
+
+margin:auto;
+
+background:white;
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+.calculator-card h2{
+text-align:center;
+color:var(--royal-blue);
+margin-bottom:25px;
+}
+
+.input-grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+}
+
+.input-group label{
+display:block;
+font-weight:600;
+margin-bottom:8px;
+}
+
+.input-group input{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+}
+
+.btn-group{
+display:flex;
+gap:15px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+font-size:16px;
+}
+
+.calculate{
+background:var(--royal-blue);
+color:white;
+}
+
+.reset{
+background:var(--red);
+color:white;
+}
+
+.pdf{
+background:#28a745;
+color:white;
+}
+
+/* RESULT */
+
+.result{
+display:none;
+margin-top:30px;
+padding:25px;
+border-radius:15px;
+background:#f7f9fc;
+}
+
+body.dark-mode .result{
+background:#2a2a2a;
+}
+
+.result p{
+margin:10px 0;
+font-size:18px;
+}
+
+.progress{
+height:20px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+margin-top:15px;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:var(--royal-blue);
+transition:1s;
+}
+
+.grade{
+font-size:28px;
+font-weight:bold;
+color:var(--red);
+}
+
+footer{
+background:var(--royal-blue);
+color:white;
+padding:40px;
+text-align:center;
+margin-top:60px;
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:42px;
+}
+
+nav{
+flex-direction:column;
+gap:15px;
+}
+
+.top-bar{
+text-align:center;
+justify-content:center;
+gap:10px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="top-bar">
+
+<div>📞 +91 XXXXX XXXXX</div>
+
+<div>
+AI-Assisted Web Application Development Using Claude
+</div>
+
+<div>
+📧 ashwinisabale61@gmail.com
+</div>
+
+</div>
+
+<nav>
+
+<div class="logo">
+🎓 Student Result Analyzer
+</div>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#calculator">Calculator</a></li>
+
+<li><a href="#about">About</a></li>
+
+</ul>
+
+<button id="themeBtn" onclick="toggleTheme()">
+🌙 Dark Mode
+</button>
+
+</nav>
+<!-- HERO SECTION -->
+
+<section id="home" class="hero">
+
+<div class="hero-content">
+
+<h1>
+Student Result Analyzer
+</h1>
+
+<p>
+AI-Assisted Web Application Development Using Claude
+</p>
+
+<button onclick="goToCalculator()">
+Start Analysis
+</button>
+
+</div>
+
+</section>
+
+<!-- FEATURES SECTION -->
+
+<section class="features">
+
+<div class="feature-card">
+<h3>📊 Total Marks</h3>
+<p>
+Automatically calculates total marks obtained in all subjects.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>📈 Percentage</h3>
+<p>
+Instant percentage calculation with progress visualization.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>🏆 Grade Evaluation</h3>
+<p>
+Smart grade assignment based on performance.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>✅ Pass / Fail</h3>
+<p>
+Determines pass or fail status using subject criteria.
+</p>
+</div>
+
+</section>
+
+<!-- ABOUT SECTION -->
+
+<section id="about" class="info">
+
+<h2>About Project</h2>
+
+<p>
+
+Student Result Analyzer is a professional web application developed using
+AI-Assisted Web Application Development techniques with Claude.
+
+This system allows students to enter subject marks and instantly generate
+their Total Marks, Percentage, Grade, Performance Analysis, and Pass/Fail Status.
+
+Additional features include PDF report generation, Dark/Light mode,
+performance charts, and responsive design.
+
+</p>
+
+</section>
+
+<!-- CALCULATOR SECTION -->
+
+<section id="calculator" class="calculator-section">
+
+<div class="calculator-card">
+
+<h2>
+🎓 Student Result Calculator
+</h2>
+
+<div class="input-grid">
+
+<div class="input-group">
+<label>Student Name</label>
+<input
+type="text"
+id="studentName"
+placeholder="Enter Student Name">
+</div>
+
+<div class="input-group">
+<label>Subject 1</label>
+<input
+type="number"
+id="s1"
+placeholder="Enter Marks">
+</div>
+
+<div class="input-group">
+<label>Subject 2</label>
+<input
+type="number"
+id="s2"
+placeholder="Enter Marks">
+</div>
+
+<div class="input-group">
+<label>Subject 3</label>
+<input
+type="number"
+id="s3"
+placeholder="Enter Marks">
+</div>
+
+<div class="input-group">
+<label>Subject 4</label>
+<input
+type="number"
+id="s4"
+placeholder="Enter Marks">
+</div>
+
+<div class="input-group">
+<label>Subject 5</label>
+<input
+type="number"
+id="s5"
+placeholder="Enter Marks">
+</div>
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="btn-group">
+
+<button
+class="btn calculate"
+onclick="calculateResult()">
+
+Calculate Result
+
+</button>
+
+<button
+class="btn pdf"
+onclick="downloadPDF()">
+
+Download PDF
+
+</button>
+
+<button
+class="btn reset"
+onclick="resetResult()">
+
+Reset
+
+</button>
+
+</div>
+
+<!-- RESULT SECTION -->
+
+<div class="result" id="result">
+
+<h2 style="margin-bottom:20px;">
+Result Summary
+</h2>
+
+<p>
+👤 Student Name :
+<b id="studentDisplay"></b>
+</p>
+
+<p>
+📅 Date :
+<span id="dateTime"></span>
+</p>
+
+<p>
+📚 Total Marks :
+<b id="total"></b> / 500
+</p>
+
+<p>
+📈 Percentage :
+<b id="percentage"></b>%
+</p>
+
+<p>
+🏆 Grade :
+<span class="grade" id="grade"></span>
+</p>
+
+<p>
+✅ Status :
+<b id="status"></b>
+</p>
+
+<p>
+💬 Remark :
+<b id="remark"></b>
+</p>
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+<br>
+
+<h3 style="margin-top:20px;">
+Performance Chart
+</h3>
+
+<canvas
+id="gradeChart"
+height="120">
+</canvas>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>
+🎓 Student Result Analyzer
+</h2>
+
+<br>
+
+<p>
+AI-Assisted Web Application Development Using Claude
+</p>
+
+<br>
+
+<p>
+Developed By Ashwini Sabale
+</p>
+
+<br>
+
+<p>
+📧 ashwinisabale61@gmail.com
+</p>
+
+<br>
+
+<p>
+© 2025 All Rights Reserved
+</p>
+
+</footer>
+<!-- CHART JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- PDF LIBRARY -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- CONFETTI -->
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script>
+
+let performanceChart;
+
+/* DARK MODE */
+
+function toggleTheme(){
+
+document.body.classList.toggle("dark-mode");
+
+const btn =
+document.getElementById("themeBtn");
+
+if(document.body.classList.contains("dark-mode")){
+
+btn.innerHTML =
+"☀️ Light Mode";
+
+}else{
+
+btn.innerHTML =
+"🌙 Dark Mode";
+
+}
+
+}
+
+/* HERO BUTTON */
+
+function goToCalculator(){
+
+document
+.getElementById("calculator")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+/* CALCULATE RESULT */
+
+function calculateResult(){
+
+const studentName =
+document.getElementById("studentName").value.trim();
+
+if(studentName===""){
+
+alert("Please Enter Student Name");
+
+return;
+}
+
+let marks=[];
+
+for(let i=1;i<=5;i++){
+
+let value =
+document.getElementById("s"+i).value;
+
+if(value===""){
+
+alert(
+"Please enter all subject marks"
+);
+
+return;
+}
+
+value = Number(value);
+
+if(value<0 || value>100){
+
+alert(
+"Marks should be between 0 and 100"
+);
+
+return;
+}
+
+marks.push(value);
+
+}
+
+let total =
+marks.reduce((a,b)=>a+b,0);
+
+let percentage =
+(total/500)*100;
+
+let grade="";
+let remark="";
+
+if(percentage>=90){
+
+grade="A";
+remark="Outstanding Performance";
+
+confetti({
+particleCount:200,
+spread:120,
+origin:{y:0.6}
+});
+
+}
+else if(percentage>=80){
+
+grade="B";
+remark="Excellent Work";
+
+}
+else if(percentage>=70){
+
+grade="C";
+remark="Very Good";
+
+}
+else if(percentage>=60){
+
+grade="D";
+remark="Good";
+
+}
+else{
+
+grade="F";
+remark="Needs Improvement";
+
+}
+
+let status =
+marks.every(mark=>mark>=35)
+?
+"PASS ✅"
+:
+"FAIL ❌";
+
+document.getElementById(
+"studentDisplay"
+).innerHTML = studentName;
+
+document.getElementById(
+"dateTime"
+).innerHTML =
+new Date().toLocaleString();
+
+document.getElementById(
+"total"
+).innerHTML = total;
+
+document.getElementById(
+"percentage"
+).innerHTML =
+percentage.toFixed(2);
+
+document.getElementById(
+"grade"
+).innerHTML = grade;
+
+document.getElementById(
+"status"
+).innerHTML = status;
+
+document.getElementById(
+"remark"
+).innerHTML = remark;
+
+document.getElementById(
+"result"
+).style.display = "block";
+
+document.getElementById(
+"progressBar"
+).style.width =
+percentage + "%";
+
+/* CHART */
+
+const ctx =
+document.getElementById(
+"gradeChart"
+);
+
+if(performanceChart){
+
+performanceChart.destroy();
+
+}
+
+performanceChart =
+new Chart(ctx,{
+
+type:'bar',
+
+data:{
+
+labels:[
+'Total Marks',
+'Percentage'
+],
+
+datasets:[{
+
+label:'Student Performance',
+
+data:[
+total,
+percentage
+],
+
+borderWidth:1
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+display:true
+}
+
+},
+
+scales:{
+
+y:{
+beginAtZero:true
+}
+
+}
+
+}
+
+});
+
+}
+
+/* RESET */
+
+function resetResult(){
+
+document.getElementById(
+"studentName"
+).value="";
+
+for(let i=1;i<=5;i++){
+
+document.getElementById(
+"s"+i
+).value="";
+
+}
+
+document.getElementById(
+"result"
+).style.display="none";
+
+document.getElementById(
+"progressBar"
+).style.width="0%";
+
+if(performanceChart){
+
+performanceChart.destroy();
+
+}
+
+}
+
+/* PDF DOWNLOAD */
+
+async function downloadPDF(){
+
+const student =
+document.getElementById(
+"studentDisplay"
+).innerText;
+
+if(student===""){
+
+alert(
+"Please calculate result first"
+);
+
+return;
+}
+
+const { jsPDF } =
+window.jspdf;
+
+const doc =
+new jsPDF();
+
+doc.setFillColor(
+65,
+105,
+225
+);
+
+doc.rect(
+0,
+0,
+210,
+30,
+'F'
+);
+
+doc.setTextColor(
+255,
+255,
+255
+);
+
+doc.setFontSize(22);
+
+doc.text(
+"Student Result Report",
+55,
+20
+);
+
+doc.setTextColor(
+0,
+0,
+0
+);
+
+doc.setFontSize(14);
+
+doc.text(
+"Student Name : "
++
+student,
+20,
+50
+);
+
+doc.text(
+"Date : "
++
+document.getElementById(
+"dateTime"
+).innerText,
+20,
+65
+);
+
+doc.text(
+"Total Marks : "
++
+document.getElementById(
+"total"
+).innerText
++
+" / 500",
+20,
+80
+);
+
+doc.text(
+"Percentage : "
++
+document.getElementById(
+"percentage"
+).innerText
++
+" %",
+20,
+95
+);
+
+doc.text(
+"Grade : "
++
+document.getElementById(
+"grade"
+).innerText,
+20,
+110
+);
+
+doc.text(
+"Status : "
++
+document.getElementById(
+"status"
+).innerText,
+20,
+125
+);
+
+doc.text(
+"Remark : "
++
+document.getElementById(
+"remark"
+).innerText,
+20,
+140
+);
+
+doc.setFontSize(11);
+
+doc.text(
+"Generated by Student Result Analyzer",
+20,
+180
+);
+
+doc.save(
+"Student_Result_Report.pdf"
+);
+
+}
+
+</script>
+
+</body>
+
+</html>

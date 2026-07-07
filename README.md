@@ -3,6 +3,9 @@
 # 🎓 Student Result Analyzer
 
 ### 📊 AI-Assisted Web Application | HTML • CSS • JavaScript
+<p align="center">
+  <img src="banner.png" alt="AI-Powered Student Result Analyzer Banner" width="100%">
+</p>
 
 <p align="center">
 

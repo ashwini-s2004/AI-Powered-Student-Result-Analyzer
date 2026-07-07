@@ -4,7 +4,7 @@
 
 ### 📊 AI-Assisted Web Application | HTML • CSS • JavaScript
 <p align="center">
-  <img src="banner.png" alt="AI-Powered Student Result Analyzer Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/ashwini-s2004/AI-Powered-Student-Result-Analyzer/main/assets/banner.png" alt="AI-Powered Student Result Analyzer Banner">
 </p>
 
 <p align="center">
